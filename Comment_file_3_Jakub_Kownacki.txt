@@ -1,0 +1,31 @@
+W pliku z programem obliczyłem cenę opcji call oraz przedziały ufności dla parametrów podanych w podpunkcie 2 oraz 5
+dla M = {100 000, 110 000, ... , 300 000}. 
+W każdym przypadku obliczyłem cenę i przedział ufności w dwóch wariantach: z redukcją wariancji za pomocą zmiennych antytetycznych
+oraz bez redukcji wariancji.
+Otrzymane wyniki dla obu zestawów parametrów przedstawiłem na dwóch rodzajach wykresów. Jeden z nich pokazuje obliczoną cenę oraz zaznacza przedział
+ufności obliczony dla danej liczby symulacji M, drugi wykres natomiast pokazuje długość przedziału ufności dla danej liczby symulacji M. Oba wykresy
+przedstawiają wyniki dla metody z redukcją wariancji jak i bez redukcji.
+
+Po analizie wykresów dla pierwszego zestawu danych można zauważyć, że cena tej opcji waha się między 11.4 a 11.475 w przypadku braku redukcji wariancji.
+Dla redukcji wariancji otrzymujemy, że cena opcji waha się między 11.425 a 11.475.
+Długości przedziałów ufności w obu wariantach zmniejszają się wraz ze wzrostem M, jednak w wariancie z redukcją wariancji przedziały są znacznie krótsze.
+Dla wariantu z redukcją wariancji długości przedziału zaczynają się poniżej 0.06 i maleją poniżej poziomu 0.04.
+Dla wariantu bez redukcji wariancji długości przedziału zaczynają się poniżej 0.14 i maleją poniżej poziomu 0.08. Są więc około dwa razy dłuższe niż
+przedziały obliczone dla wariantu z redukcją wariancji.
+
+Po analizie wykresów dla drugiego zestawu danych można zauważyć, że cena tej opcji waha się między 34.9 a 35.4 w przypadku braku redukcji wariancji.
+Dla redukcji wariancji otrzymujemy, że cena opcji waha się między około 35.1 a 35.4. Tak więc otrzymane wyniki nie różnią się znacząco od podanej w treści
+zadania wartości 34.9998.
+Długości przedziałów ufności w obu wariantach zmniejszają się wraz ze wzrostem M, jednak w wariancie z redukcją wariancji przedziały są krótsze, jednak nie
+tak znacznie jak w przypadku pierwszego zestawu parametrów.
+Dla wariantu z redukcją wariancji długości przedziału zaczynają się poniżej 0.5 i maleją poniżej poziomu 0.3.
+Dla wariantu bez redukcji wariancji długości przedziału zaczynają się trochę powyżej 0.7 i maleją do poziomu około 0.4. 
+
+W obu przypadkach pojawiały się problemy z okazjonalnym występowaniem ujemnych wartości procesu V_t. Aby poradzić sobie z tym problemem przetestowałem trzy
+rozwiązania:
+1. spróbowałem zamienić proces V_t na proces Y_t = log (V_t), aby ominąć konieczność liczenia pierwiastka z liczby ujemnej. Jednak program nadal zwracał
+błąd nan, tak więc ta metoda nie zadziałała.
+2. brałem wartości bezwzględne procesu V_t, aby zagwarantować nieujemność wartości V_t.
+3. brałem max ( V_t, 0), aby zagwarantować nieujemność wartości V_t.
+Pierwsza metoda nie działała, natomiast dwie kolejne dawały podobne wyniki. Przedstawione w pliku z programem wykresy powstały w oparciu o dane uzyskane z
+wykorzystania trzeciej metody. 
